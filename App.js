@@ -1,17 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 
-export  class Step1 extends React.Component {
+class Step1 extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      cities: [
-        { name: "New York", temp: 80, key: 'ny' },
-        { name: "Chicago", temp: 74, key: 'chi' },
-        { name: "Los Angeles", temp: 72, key: 'la' },
-        { name: "Miami", temp: 93, key: 'mia' },
-        { name: "Anchorage", temp: 45, key: 'anc'}
+      students: [
+        { name: "John Doe", grade: 90, key: 'jd1' },
+        { name: "Julie Dooly", grade: 91, key: 'jd2' },
+        { name: "Jun Do", grade: 92, key: 'jd3' },
+        { name: "Jan Dunn", grade: 93, key: 'jd4' },
+        { name: "Juan Diaz", grade: 94, key: 'jd5'}
       ]
     };
   }
@@ -21,13 +21,15 @@ export  class Step1 extends React.Component {
       <View style={styles.container}>
         <View>
           <FlatList
-            data={this.state.cities}
-            renderItem={({item}) => 
-              <View>
-                <Text>{item.name}</Text>
-                <Text>{item.temp}</Text>
-              </View>
-            }
+            data={this.state.students}
+            renderItem={({item}) => {
+              return (
+                <View>
+                  <Text>{item.name}</Text>
+                  <Text>{item.grade}</Text>
+                </View>
+              );
+            }}
             />
         </View>
       </View>
@@ -35,18 +37,17 @@ export  class Step1 extends React.Component {
   }
 }
 
-export class Step2 extends React.Component {
-
+class Step2 extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      cities: [
-        { name: "New York", temp: 80, key: 'ny' },
-        { name: "Chicago", temp: 74, key: 'chi' },
-        { name: "Los Angeles", temp: 72, key: 'la' },
-        { name: "Miami", temp: 93, key: 'mia' },
-        { name: "Anchorage", temp: 45, key: 'anc'}
+      students: [
+        { name: "John Doe", grade: 90, key: 'jd1' },
+        { name: "Julie Dooly", grade: 91, key: 'jd2' },
+        { name: "Jun Do", grade: 92, key: 'jd3' },
+        { name: "Jan Dunn", grade: 93, key: 'jd4' },
+        { name: "Juan Diaz", grade: 94, key: 'jd5'}
       ]
     };
   }
@@ -55,24 +56,26 @@ export class Step2 extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>Totally Accurate Weather</Text>
+          <Text style={styles.headerText}>Totally Accurate Grades</Text>
         </View>
         <View style={styles.body}>
           <FlatList
-            data={this.state.cities}
-            renderItem={({item}) => 
-              <View style={styles.cwItem}>
-                <Text style={styles.cwItemText}>{item.name}</Text>
-                <Text style={styles.cwItemText}>{item.temp}</Text>
-              </View>
-            }
+            data={this.state.students}
+            renderItem={({item}) =>  {
+              return (
+                <View style={styles.gbItem}>
+                  <Text style={styles.gbItemText}>{item.name}</Text>
+                  <Text style={styles.gbItemText}>{item.grade}</Text>
+                </View>
+              );
+            }}
             />
         </View>
         <View style={styles.footer}>
           <TouchableOpacity 
             style={styles.refresh}>
             <Text>
-              Check Weather
+              Recalculate Grades
             </Text>
           </TouchableOpacity>
         </View>
@@ -81,30 +84,30 @@ export class Step2 extends React.Component {
   }
 }
 
-export class Step3 extends React.Component {
+class Step3 extends React.Component {
 
   constructor() {
     super();
 
     this.state = {
-      cities: [
-        { name: "New York", temp: 80, key: 'ny' },
-        { name: "Chicago", temp: 74, key: 'chi' },
-        { name: "Los Angeles", temp: 72, key: 'la' },
-        { name: "Miami", temp: 93, key: 'mia' },
-        { name: "Anchorage", temp: 45, key: 'anc'}
+      students: [
+        { name: "John Doe", grade: 90, key: 'jd1' },
+        { name: "Julie Dooly", grade: 91, key: 'jd2' },
+        { name: "Jun Do", grade: 92, key: 'jd3' },
+        { name: "Jan Dunn", grade: 93, key: 'jd4' },
+        { name: "Juan Diaz", grade: 94, key: 'jd5'}
       ]
     };
   }
 
-  updateWeather = () => {
-    let updatedCities = [];
-    for (let c of this.state.cities) {
-      c.temp = Math.round(Math.random() * 100);
-      updatedCities.push(c);
+  updateGradebook = () => {
+    let updatedStudents = [];
+    for (let s of this.state.students) {
+      s.grade = Math.round(Math.random() * 100);
+      updatedStudents.push(s);
     }
     this.setState({
-      cities: updatedCities
+      students: updatedStudents
     });
   }
 
@@ -112,25 +115,27 @@ export class Step3 extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>Totally Accurate Weather</Text>
+          <Text style={styles.headerText}>Totally Accurate Grades</Text>
         </View>
         <View style={styles.body}>
           <FlatList
-            data={this.state.cities}
-            renderItem={({item}) => 
-              <View style={styles.cwItem}>
-                <Text style={styles.cwItemText}>{item.name}</Text>
-                <Text style={styles.cwItemText}>{item.temp}</Text>
-              </View>
-            }
-            />
+            data={this.state.students}
+            renderItem={({item}) => {
+              return (
+                <View style={styles.gbItem}>
+                  <Text style={styles.gbItemText}>{item.name}</Text>
+                  <Text style={styles.gbItemText}>{item.grade}</Text>
+                </View>
+              );
+            }}
+          />
         </View>
         <View style={styles.footer}>
           <TouchableOpacity 
             style={styles.refresh}
-            onPress={this.updateWeather}>
+            onPress={this.updateGradebook}>
             <Text>
-              Check Weather
+              Recalculate Grades
             </Text>
           </TouchableOpacity>
         </View>
@@ -140,7 +145,7 @@ export class Step3 extends React.Component {
 }
 
 
-class CityWeather extends React.Component {
+class GradebookEntry extends React.Component {
   
   constructor(props) {
     super(props);
@@ -148,38 +153,38 @@ class CityWeather extends React.Component {
 
   render() {
     return (
-      <View style={styles.cwItem}>
-        <Text style={styles.cwItemText}>{this.props.name}</Text>
-        <Text style={styles.cwItemText}>{this.props.temp}</Text>
+      <View style={styles.gbItem}>
+        <Text style={styles.gbItemText}>{this.props.name}</Text>
+        <Text style={styles.gbItemText}>{this.props.grade}</Text>
     </View>
     );
   }
 }
 
-export default class Step4 extends React.Component {
+class Step4 extends React.Component {
 
   constructor() {
     super();
 
     this.state = {
-      cities: [
-        { name: "New York", temp: 80, key: 'ny' },
-        { name: "Chicago", temp: 74, key: 'chi' },
-        { name: "Los Angeles", temp: 72, key: 'la' },
-        { name: "Miami", temp: 93, key: 'mia' },
-        { name: "Anchorage", temp: 45, key: 'anc'}
+      students: [
+        { name: "John Doe", grade: 90, key: 'jd1' },
+        { name: "Julie Dooly", grade: 91, key: 'jd2' },
+        { name: "Jun Do", grade: 92, key: 'jd3' },
+        { name: "Jan Dunn", grade: 93, key: 'jd4' },
+        { name: "Juan Diaz", grade: 94, key: 'jd5'}
       ]
     };
   }
 
-  updateWeather = () => {
-    let updatedCities = [];
-    for (let c of this.state.cities) {
-      c.temp = Math.round(Math.random() * 100);
-      updatedCities.push(c);
+  updateGradebook = () => {
+    let updatedStudents = [];
+    for (let s of this.state.students) {
+      s.grade = Math.round(Math.random() * 100);
+      updatedStudents.push(s);
     }
     this.setState({
-      cities: updatedCities
+      students: updatedStudents
     });
   }
 
@@ -187,22 +192,24 @@ export default class Step4 extends React.Component {
     return (
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>Totally Accurate Weather</Text>
+          <Text style={styles.headerText}>Totally Accurate Grades</Text>
         </View>
         <View style={styles.body}>
           <FlatList
-            data={this.state.cities}
-            renderItem={({item}) => 
-              <CityWeather name={item.name} temp={item.temp}/>
-            }
+            data={this.state.students}
+            renderItem={({item}) => {
+              return (
+                <GradebookEntry name={item.name} grade={item.grade}/>
+              );
+            }}
             />
         </View>
         <View style={styles.footer}>
           <TouchableOpacity 
             style={styles.refresh}
-            onPress={this.updateWeather}>
+            onPress={this.updateGradebook}>
             <Text>
-              Check Weather
+              Recalculate Grades
             </Text>
           </TouchableOpacity>
         </View>
@@ -228,7 +235,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     alignSelf: 'center'
   },
-  cwItem: {
+  gbItem: {
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
@@ -237,7 +244,7 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
   },
-  cwItemText: {
+  gbItemText: {
     fontSize: 24,
   },
   footer: {
@@ -255,3 +262,8 @@ const styles = StyleSheet.create({
     color: 'white'
   }
 });
+
+//export default Step1;
+//export default Step2;
+//export default Step3;
+export default Step4;
